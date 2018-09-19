@@ -8,12 +8,12 @@ class Articles extends Component {
     }
     render() {
         const articles = this.state.articles;
-        console.log(articles);
+        console.log(this.props.match.params.topic);
         return (
             <div >
                 <ul>
                     {articles.map(article => {
-                        return <li key={article.id}>{article.title}</li>
+                        return <article key={article.id}>{article.title}</article>
                     }
                     )}
                 </ul>
