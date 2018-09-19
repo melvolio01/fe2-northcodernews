@@ -1,5 +1,11 @@
 nav {
     background-color: #265C00;
     color: #fdffff;
-    padding: 20px;
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+    color:  #fdffff;
+    padding: 10px;
 }

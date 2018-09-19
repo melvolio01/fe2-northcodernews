@@ -8,7 +8,7 @@ class Articles extends Component {
     }
     render() {
         const articles = this.state.articles;
-        console.log(this.props.match.params.topic);
+        console.log(this.props.match.params.topic ? true : false);
         return (
             <div >
                 <ul>
@@ -22,11 +22,16 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        this.getArticles()
+        this.getArticles();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (this.props !== prevProps) this.getArticles();
     }
 
     getArticles = async () => {
-        const res = await API.fetchArticles();
+        const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
+        const res = (topic ? await API.fetchArticlesByTopic(topic) : await API.fetchArticles());
         const articles = res.data.articles;
         this.setState({
             articles
