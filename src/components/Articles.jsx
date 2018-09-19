@@ -14,8 +14,8 @@ class Articles extends Component {
                 <ul>
                     {articles.map(article => {
                         return (
-                            <div>
-                                <Link to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
+                            <div key={article._id}>
+                                <Link key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
                             </div>)
                     }
                     )}
@@ -25,6 +25,7 @@ class Articles extends Component {
     }
 
     componentDidMount() {
+        console.log(this.props.user);
         this.getArticles();
     }
 
@@ -34,7 +35,6 @@ class Articles extends Component {
 
     getArticles = async () => {
         const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
-        console.log(topic);
         const res = (topic ? await API.fetchArticlesByTopic(topic) : await API.fetchArticles());
         const articles = res.data.articles;
         this.setState({
