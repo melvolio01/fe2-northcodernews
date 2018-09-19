@@ -2,10 +2,15 @@ nav {
     background-color: #265C00;
     color: #fdffff;
     padding: 10px;
+    display: flex;
+    width: 100%;
 }
 
-a {
+nav a {
     text-decoration: none;
     color:  #fdffff;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }

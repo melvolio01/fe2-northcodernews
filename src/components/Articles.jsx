@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Article.css';
 import * as API from '../api';
+import { Link } from 'react-router-dom';
 
 class Articles extends Component {
     state = {
@@ -8,12 +9,14 @@ class Articles extends Component {
     }
     render() {
         const articles = this.state.articles;
-        console.log(this.props.match.params.topic ? true : false);
         return (
             <div >
                 <ul>
                     {articles.map(article => {
-                        return <article key={article.id}>{article.title}</article>
+                        return (
+                            <div>
+                                <Link to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
+                            </div>)
                     }
                     )}
                 </ul>
@@ -31,6 +34,7 @@ class Articles extends Component {
 
     getArticles = async () => {
         const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
+        console.log(topic);
         const res = (topic ? await API.fetchArticlesByTopic(topic) : await API.fetchArticles());
         const articles = res.data.articles;
         this.setState({

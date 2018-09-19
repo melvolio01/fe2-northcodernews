@@ -4,7 +4,11 @@
 }
 
 body {
-  color: #2A2922;
+  color: #505160;
   font-family: 'Playfair Display', serif;
   font-size:2em;
+}
+
+p {
+  font-size: 0.5em;
 }

@@ -4,3 +4,5 @@ const axios = require('axios');
 export const fetchArticles = () => axios.get(`${DB_URL}/articles`);
 
 export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${topic}/articles`);
+
+export const fetchArticleById = (id) => axios.get(`${DB_URL}/articles/${id}`);
