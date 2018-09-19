@@ -6,11 +6,11 @@ class Article extends Component {
         article: {}
     }
     render() {
+        console.log(this.props.history);
         const { article } = this.state.article;
-        if (article) console.log(article.title);
         return (
             <div>
-                {article ? <div><h4>{article.title}</h4><p>{article.body}</p> </div>
+                {article ? <div><h4>{article.title}</h4><p>{article.body}</p><button onClick={this.props.history.goBack}>Back</button> </div>
                     : null}
 
 
