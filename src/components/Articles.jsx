@@ -13,16 +13,15 @@ class Articles extends Component {
         return (
             <div >
                 <ul>
-                    {console.log(articles[0])}
                     {articles.map(article => {
                         const createdAt = moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a');
                         return (
                             <div key={article._id}>
-                                <div className="voter"><i class="far fa-arrow-alt-circle-up"></i><p>{article.votes}</p><i class="far fa-arrow-alt-circle-down"></i></div>
+                                <div className="voter"><i className="far fa-arrow-alt-circle-up"></i><p>{article.votes}</p><i className="far fa-arrow-alt-circle-down"></i></div>
                                 <Link key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
                                 <p>Topic: {article.belongs_to}</p>
                                 <p>Comments: {article.comment_count}</p>
-                                <p>Posted by {article.created_by.username} {'(' + createdAt + ')'}</p>
+                                <p>Posted by: {article.created_by.username} {'(' + createdAt + ')'}</p>
                             </div>)
                     }
                     )}
@@ -32,7 +31,6 @@ class Articles extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.user);
         this.getArticles();
     }
 

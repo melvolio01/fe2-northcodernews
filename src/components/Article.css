@@ -5,7 +5,3 @@ article {
 .voter {
     display: inline-block;
 }
-
-.voter p {
-    padding: 0 10px;
-}

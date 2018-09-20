@@ -1,5 +1,10 @@
 .my-comment {
     background-color: #b3de81;
+    opacity: 0.8;
+}
+
+.my-comment:hover {
+    opacity: 0.9;
 }
 
 .bold {

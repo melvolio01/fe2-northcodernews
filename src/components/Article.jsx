@@ -10,7 +10,9 @@ class Article extends Component {
         const { article } = this.state.article;
         return (
             <div>
-                {article ? <div><h4>{article.title}</h4><p>{article.body}</p><button onClick={this.props.history.goBack}>Back</button> </div>
+                {article ? <div>
+                    <div className="voter"><i className="far fa-arrow-alt-circle-up"></i><p>{article.votes}</p><i className="far fa-arrow-alt-circle-down"></i></div>
+                    <h4>{article.title}</h4><p>{article.body}</p><button onClick={this.props.history.goBack}>Back</button> </div>
                     : null}
                 {article ? <Comments id={this.state.article.article._id} user={this.props.user} /> : null}
             </div>

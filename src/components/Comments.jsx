@@ -21,6 +21,14 @@ class Comments extends Component {
                                     const myComment = (comment.created_by._id === this.props.user);
                                     const createdAt = moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a');
                                     return <div key={comment._id} className={myComment ? "my-comment" : null} >
+                                        <div className="voter"> {!myComment ?
+                                            <div>
+                                                <i className="far fa-arrow-alt-circle-up"></i>
+                                                <p>{comment.votes}</p>
+                                                <i className="far fa-arrow-alt-circle-down"></i>
+                                            </div>
+                                            : <p>Votes: {comment.votes}</p>
+                                        }</div>
                                         <p className="bold">{comment.created_by.username} </p>
                                         <p>{'(' + createdAt + ')'}</p>
                                         <p key={comment._id}>{comment.body}</p>
@@ -36,6 +44,12 @@ class Comments extends Component {
     }
     componentDidMount() {
         this.getComments();
+    }
+
+    componentWillUpdate = (prevProps) => {
+        if (this.props !== prevProps) {
+            this.getComments();
+        }
     }
 
     getComments = async () => {
@@ -55,17 +69,14 @@ class Comments extends Component {
                 comments: allComments
             });
         }
+        this.getComments();
     }
 
     deleteComment = async (e, comment) => {
         e.preventDefault();
-        console.log(this.state.comments.length);
         const res = await API.removeComment(comment._id)
-        console.log(res);
         this.setState({
             deletedComments: [...this.state.deletedComments, comment]
-        }, () => {
-            console.log(this.state.comments.length);
         })
     }
 }
