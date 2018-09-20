@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import './Comments.css';
+import * as API from '../api'
 
 class Comment extends Component {
+    state = {
+        voteChange: 0
+    }
     render() {
         console.log(this.props.user);
         const comment = this.props.comment;
@@ -11,9 +15,9 @@ class Comment extends Component {
         return <div key={comment._id} className={myComment ? "my-comment" : null} >
             <div className="voter"> {!myComment ?
                 <div>
-                    <i className="far fa-arrow-alt-circle-up"></i>
-                    <p>{comment.votes}</p>
-                    <i className="far fa-arrow-alt-circle-down"></i>
+                    <button onClick={() => this.handleVote('up')}><i className="far fa-arrow-alt-circle-up"></i></button>
+                    <p>{comment.votes + this.state.voteChange}</p>
+                    <button onClick={() => this.handleVote('down')} > <i className="far fa-arrow-alt-circle-down"></i></button>
                 </div>
                 : <p>Votes: {comment.votes}</p>
             }</div>
@@ -23,5 +27,14 @@ class Comment extends Component {
             {myComment ? <i className="fas fa-trash-alt" onClick={((e) => this.props.deleteComment(e, comment))}></i> : null}
         </div>
     }
+
+    handleVote = async (direction) => {
+        const commentID = (this.props.comment._id);
+        await API.voteOnComment(commentID, direction);
+        this.setState({
+            voteChange: direction === 'up' ? 1 : direction === 'down' ? -1 : 0
+        })
+    }
+
 }
 export default Comment;

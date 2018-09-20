@@ -12,3 +12,7 @@ body {
 p {
   font-size: 0.5em;
 }
+
+button {
+  width: 60px;
+}

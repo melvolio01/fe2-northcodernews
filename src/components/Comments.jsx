@@ -15,10 +15,10 @@ class Comments extends Component {
             <div>
                 <div>
                     {
-                        this.state.comments ?
+                        this.state.comments.length > 0 ?
                             this.state.comments.map(comment => {
                                 if (!this.state.deletedComments.includes(comment)) {
-                                    return <Comment user={this.props.user} comment={comment} deleteComment={this.deleteComment} />
+                                    return <Comment key={comment._id} user={this.props.user} comment={comment} deleteComment={this.deleteComment} />
 
                                 } else return null
                             })

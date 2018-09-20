@@ -19,6 +19,13 @@ export const addCommentToArticle = (articleId, comment, user) => {
 }
 
 export const removeComment = (commentId) => {
-    console.log(`${commentId} deleted`);
     return axios.delete(`${DB_URL}/comments/${commentId}`)
+}
+
+export const voteOnArticle = (id, direction) => {
+    return axios.put(`${DB_URL}/articles/${id}?vote=${direction}`)
+}
+
+export const voteOnComment = (id, direction) => {
+    return axios.put(`${DB_URL}/comments/${id}?vote=${direction}`)
 }
