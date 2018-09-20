@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import * as API from '../api';
-import NewComment from './NewComment.jsx';
+import Comment from './Comment';
+import NewComment from './NewComment';
 import './Comments.css';
-import moment from 'moment';
+
 
 class Comments extends Component {
     state = {
@@ -17,23 +18,8 @@ class Comments extends Component {
                         this.state.comments ?
                             this.state.comments.map(comment => {
                                 if (!this.state.deletedComments.includes(comment)) {
-                                    console.log(comment);
-                                    const myComment = (comment.created_by._id === this.props.user);
-                                    const createdAt = moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a');
-                                    return <div key={comment._id} className={myComment ? "my-comment" : null} >
-                                        <div className="voter"> {!myComment ?
-                                            <div>
-                                                <i className="far fa-arrow-alt-circle-up"></i>
-                                                <p>{comment.votes}</p>
-                                                <i className="far fa-arrow-alt-circle-down"></i>
-                                            </div>
-                                            : <p>Votes: {comment.votes}</p>
-                                        }</div>
-                                        <p className="bold">{comment.created_by.username} </p>
-                                        <p>{'(' + createdAt + ')'}</p>
-                                        <p key={comment._id}>{comment.body}</p>
-                                        {myComment ? <i className="fas fa-trash-alt" onClick={((e) => this.deleteComment(e, comment))}></i> : null}
-                                    </div>
+                                    return <Comment user={this.props.user} comment={comment} deleteComment={this.deleteComment} />
+
                                 } else return null
                             })
                             : null}
@@ -74,7 +60,7 @@ class Comments extends Component {
 
     deleteComment = async (e, comment) => {
         e.preventDefault();
-        const res = await API.removeComment(comment._id)
+        await API.removeComment(comment._id)
         this.setState({
             deletedComments: [...this.state.deletedComments, comment]
         })
