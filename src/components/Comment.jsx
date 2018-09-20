@@ -8,7 +8,6 @@ class Comment extends Component {
         voteChange: 0
     }
     render() {
-        console.log(this.props.user);
         const comment = this.props.comment;
         const myComment = (comment.created_by._id === this.props.user);
         const createdAt = moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a');

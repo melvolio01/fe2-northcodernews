@@ -32,7 +32,7 @@ class Comments extends Component {
         this.getComments();
     }
 
-    componentWillUpdate = (prevProps) => {
+    componentDidUpdate = (prevProps) => {
         if (this.props !== prevProps) {
             this.getComments();
         }
@@ -45,17 +45,17 @@ class Comments extends Component {
         this.setState({
             comments
         });
+        console.log(this.state.comments);
     }
 
     addComment = async (comment) => {
         const res = await API.addCommentToArticle(this.props.id, comment, this.props.user);
         if (res) {
-            const allComments = [...this.state.comments, res.data.comment];
-            this.setState({
-                comments: allComments
-            });
+            const newComment = res.data.comment;
+            if (this.state.comments !== undefined) {
+                this.getComments();
+            }
         }
-        this.getComments();
     }
 
     deleteComment = async (e, comment) => {
