@@ -1,3 +1,11 @@
 article {
     font-size: 0.75em;
 }
+
+.voter {
+    display: inline-block;
+}
+
+.voter p {
+    padding: 0 10px;
+}

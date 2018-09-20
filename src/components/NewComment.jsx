@@ -23,7 +23,6 @@ class NewComment extends Component {
         e.preventDefault();
         const newComment = this.state.newComment;
         this.setState({ newComment: '' });
-        console.log(this.state);
         this.props.addComment(newComment);
     }
 }

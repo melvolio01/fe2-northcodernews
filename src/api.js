@@ -17,3 +17,8 @@ export const addCommentToArticle = (articleId, comment, user) => {
         })
     }
 }
+
+export const removeComment = (commentId) => {
+    console.log(`${commentId} deleted`);
+    return axios.delete(`${DB_URL}/comments/${commentId}`)
+}

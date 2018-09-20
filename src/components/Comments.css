@@ -1,0 +1,16 @@
+.my-comment {
+    background-color: #b3de81;
+}
+
+.bold {
+    font-size: 0.75em;
+    font-weight: bold;
+}
+
+i {
+    opacity: 0.5;
+}
+
+i:hover {
+    opacity: 0.8;
+}
