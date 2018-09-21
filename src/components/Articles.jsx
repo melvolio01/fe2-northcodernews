@@ -36,9 +36,12 @@ class Articles extends Component {
                     const createdAt = moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a');
                     return (
                         <div className={`article area${i}`} key={article._id}>
-                            <div className="voter"><button><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes}</p>
-                                <button><i className="far fa-arrow-alt-circle-down"></i></button></div>
-                            <Link key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
+                            <div className="img-container"></div>
+                            <div class="article-info">
+                                <div className="voter"><button><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes}</p>
+                                    <button><i className="far fa-arrow-alt-circle-down"></i></button></div>
+                                <Link className="article-title" key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
+                            </div>
                             <p>Topic: {article.belongs_to}</p>
                             <p>Comments: {article.comment_count}</p>
                             <p>Posted by: {article.created_by.username} {'(' + createdAt + ')'}</p>

@@ -8,7 +8,13 @@
 
 .sorting {
     width: 100px;
-    color: red;
+    color: #594d46;
     height: 30px;
-    border: 2px solid red;
+    background-color: #d1b280;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.6em;
+}
+
+.sorting:hover {
+    cursor: pointer;
 }

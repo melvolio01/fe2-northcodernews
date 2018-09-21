@@ -1,9 +1,9 @@
 nav {
     position: fixed;
     overflow: hidden;
-    opacity:0.9;
-    background-color: #265C00;
-    color: #fdffff;
+    opacity: 1;
+    background-color:#080706;
+    color: #EFEFEF;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -13,26 +13,11 @@ nav {
 
 nav a {
     text-decoration: none;
-    color:  #fdffff;
-    padding: 10px;
+    color:  #EFEFEF;
+    padding: 1%;
     display: flex;
+    font-size: 0.75em;
     flex-direction: column;
     justify-content: space-around;
     height: 100%;
 }
-
-/* .nav-bar {
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    width: 100%;
-    background: rgba(2, 2, 2, 0.9);
-    color: white;
-    text-align: center;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
-    margin-bottom: -5vh;
-    opacity: 0.9;
-    display: flex;
-    justify-content: space-between;
-  } */
