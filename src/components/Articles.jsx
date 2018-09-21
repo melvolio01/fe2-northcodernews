@@ -12,28 +12,22 @@ class Articles extends Component {
     }
     render() {
         const articles = this.state.articles;
-        const dateSorted = sortBy(articles, article => article.created_at).reverse();
-        const popularitySorted = sortBy(articles, article => (article.votes + article.comment_count)).reverse()
-        // dateSorted.forEach((article) => {
-        //     console.log(article.created_at)
-        // })
-        // popularitySorted.forEach((article) => {
-        //     console.log(article)
-        // })
+        let pages = Math.ceil(this.state.articles.length / 8);
+        pages = Array.from({ length: pages }, (e, i) => i + 1) // [0, 1, 2, 3, 4]
+        console.log(pages);
         return (
             <div className="articles grid-container">
                 <div className="article-sort">
                     <button className="sorting" onClick={() => this.dateSortArticles('newest')}>Newest</button>
                     <button className="sorting" onClick={() => this.dateSortArticles('oldest')}>Oldest</button>
-                    <button className="sorting" onClick={() => this.trendSortArticles()}>Trending</button>
+                    <button className="sorting" onClick={() => this.trendSortArticles()}>Popular</button>
                 </div>
                 {articles.slice(this.state.page, 8).map((article, i) => {
-                    const articleRating = (+article.votes + +article.comment_count);
-                    const articleAge = article.created_at;
-                    // console.log(articleAge);
-                    // console.log(articleRating);
+                    // const articleRating = (+article.votes + +article.comment_count);
+                    // const articleAge = article.created_at;
 
-                    const createdAt = moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a');
+
+                    const createdAt = moment(article.created_at).fromNow();
                     return (
                         <div className={`article area${i}`} key={article._id}>
                             <div className="img-container"></div>
@@ -49,7 +43,10 @@ class Articles extends Component {
                 }
                 )}
                 <div class="pagination">
-                    <p>Pagination</p>
+                    <p>More Articles</p>
+                    {pages.map((page) => {
+                        return <button className="paginate">{page}</button>
+                    })}
                 </div>
             </div>
         );

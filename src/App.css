@@ -75,8 +75,9 @@ button i:focus {
 }
 
 .article-title {
-  font-size: 0.75em;
+  font-size: 0.7em;
   width: 80%;
+  margin-top: -10px;
 }
 
 .area0 {
@@ -134,7 +135,14 @@ button i:focus {
   grid-area: pagination;
   background-color: #D1B280;
   height: 100px;
-  opacity: 0.8;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.paginate {
+  border: 1px solid green;
+  width: 20px;
+  height: 20px;
 }
 
 a {
@@ -158,9 +166,9 @@ a:hover {
 }
 
 .area1 .img-container {
-  margin-bottom: 2%;
+  margin-bottom: 5%;
   border: 1px solid #594d46;
-  height: 60%;
+  height: 50%;
   width: 100%;
   background-image: url("https://i.pinimg.com/originals/0e/60/60/0e60601f0e9c24770b7515717fa1e650.jpg");
 }
@@ -177,4 +185,11 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 0 5px;
 }
+
+.voter p {
+  text-align: center;
+  padding: 5px;
+}
+

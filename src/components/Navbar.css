@@ -5,26 +5,37 @@ nav {
     background-color:#080706;
     color: #EFEFEF;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
     text-align: center;
     margin: 0;
     opacity: 0.9;
-    display: flex;
-    justify-content: center;
 } 
 
 #home-icon {
-    height: 40px;
+    margin: 0 auto;
+    height: 50px;
+    width: 50px;
 }
 
 nav a {
     text-decoration: none;
     color:  #EFEFEF;
-    padding: 1%;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
     display: flex;
-    font-size: 0.75em;
     flex-direction: column;
     justify-content: space-around;
+    flex-wrap: wrap;
+    font-size: 0.6em;
     height: 100%;
+    padding-bottom: 2px;
+}
+
+.menu {
+    width: 100;
+    background-color: #594d46;
+    opacity: 1;
+    height: 50%;
 }

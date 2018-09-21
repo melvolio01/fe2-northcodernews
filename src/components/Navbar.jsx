@@ -11,13 +11,12 @@ class Navbar extends Component {
         return (
             <nav>
                 <Link onClick={() => this.toggleDropDown()} to="/"><img id="home-icon" src="https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png"></img></Link>
-                {this.state.showDropDown ? <DropDown /> : null}
+                {this.state.showDropDown ? <DropDown func={this.hideDropDownOnClick} /> : null}
             </nav>
         );
     };
 
     toggleDropDown = () => {
-        console.log('toggle!');
         this.state.showDropDown ?
             this.setState({
                 showDropDown: false
@@ -25,6 +24,12 @@ class Navbar extends Component {
             this.setState({
                 showDropDown: true
             })
+    }
+
+    hideDropDownOnClick = () => {
+        this.setState({
+            showDropDown: false
+        });
     }
 }
 

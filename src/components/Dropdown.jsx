@@ -1,27 +1,25 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 
-class DropDown extends Component {
-    render() {
-        return (
-            <div>
-                <div className="menu">
-                    <NavLink to="/topics/coding" activeStyle={{
-                        fontWeight: 'bold',
-                        borderBottom: '5px solid white'
-                    }}>Coding</NavLink>
-                    <NavLink to="/topics/football" activeStyle={{
-                        fontWeight: 'bold',
-                        color: 'red'
-                    }}>Football</NavLink>
-                    <NavLink to="/topics/cooking" activeStyle={{
-                        fontWeight: 'bold',
-                        color: 'red'
-                    }}>Cooking</NavLink>
-                </div>
+const Dropdown = (func) => {
+    return (
+        <div>
+            <div className="menu">
+                <NavLink onClick={(e) => func(e)} to="/topics/coding" activeStyle={{
+                    color: '#D1B280',
+                    paddingBottom: '2px'
+                }}>Coding</NavLink>
+                <NavLink onClick={(e) => func(e)} to="/topics/football" activeStyle={{
+                    color: '#D1B280',
+                    paddingBottom: '2px'
+                }}>Football</NavLink>
+                <NavLink onClick={(e) => func(e)} to="/topics/cooking" activeStyle={{
+                    color: '#D1B280',
+                    paddingBottom: '2px'
+                }}>Cooking</NavLink>
             </div>
-        );
-    }
-}
+        </div>
+    );
+};
 
-export default DropDown;
+export default Dropdown;
