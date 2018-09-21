@@ -11,7 +11,7 @@ class Article extends Component {
         const { article } = this.state.article;
         return (
             <div>
-                {article ? <div>
+                {article ? <div className="chosen-article">
                     <div className="voter"><button onClick={() => this.handleVote('up')}><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes + this.state.voteChange}</p>
                         <button onClick={() => this.handleVote('down')}> <i className="far fa-arrow-alt-circle-down"></i></button></div>
                     <h4>{article.title}</h4><p>{article.body}</p><button onClick={this.props.history.goBack}>Back</button> </div>

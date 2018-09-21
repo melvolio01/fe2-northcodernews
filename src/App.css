@@ -14,5 +14,23 @@ p {
 }
 
 button {
-  width: 60px;
+  border: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+button i {
+  opacity: 0.5;
+  font-size: 2em;
+  transition-duration: 10000ms;
+  color: blue;
+}
+
+button i:focus {
+  opacity: 0.8;
+  font-size: 2.5em;
+  transition-duration: 10000ms;
+  color: red;
 }

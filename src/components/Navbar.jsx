@@ -1,15 +1,24 @@
 import React from 'react';
 import './Navbar.css';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 const Navbar = () => {
     return (
         <nav>
             <Link to="/">NavBar</Link>
-            <Link to="/topics/coding">Coding</Link>
-            <Link to="/topics/football">Football</Link>
-            <Link to="/topics/cooking">Cooking</Link>
+            <NavLink to="/topics/coding" activeStyle={{
+                fontWeight: 'bold',
+                borderBottom: '5px solid white'
+            }}>Coding</NavLink>
+            <NavLink to="/topics/football" activeStyle={{
+                fontWeight: 'bold',
+                color: 'red'
+            }}>Football</NavLink>
+            <NavLink to="/topics/cooking" activeStyle={{
+                fontWeight: 'bold',
+                color: 'red'
+            }}>Cooking</NavLink>
         </nav>
     );
 };

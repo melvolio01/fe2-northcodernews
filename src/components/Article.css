@@ -1,30 +1,14 @@
-/* .articles {
-    font-size: 1em;
-    display: flex;
-    flex-wrap: wrap;
-    background-color: #b3de81;
+.articles {
+    padding-top: 8%;
 }
 
-.article {
-   justify-content: center;
-   background-color: #FDFFFF;
-   display: inline-flex;
-   min-height: 10vh;
-   width: calc(90% / 3);
-   flex-wrap: wrap;
-   margin: 10px;
-   padding: 10px;
+.chosen-article {
+    padding-top: 8%;
 }
 
-.article-content {
-    display: block;
-    background: red;
+.sorting {
+    width: 100px;
+    color: red;
+    height: 30px;
+    border: 2px solid red;
 }
-
-.voter {
-    display: inline-block;
-    width: 10%;
-    border: 1px solid black;
-    float: left;
-    justify-content: center;
-} */

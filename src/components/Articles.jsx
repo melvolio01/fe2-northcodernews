@@ -3,6 +3,7 @@ import './Article.css';
 import * as API from '../api';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import sortBy from 'lodash.sortby';
 
 class Articles extends Component {
     state = {
@@ -10,10 +11,26 @@ class Articles extends Component {
     }
     render() {
         const articles = this.state.articles;
+        const dateSorted = sortBy(articles, article => article.created_at).reverse();
+        const popularitySorted = sortBy(articles, article => (article.votes + article.comment_count)).reverse()
+        // dateSorted.forEach((article) => {
+        //     console.log(article.created_at)
+        // })
+        // popularitySorted.forEach((article) => {
+        //     console.log(article)
+        // })
         return (
             <div className="articles">
+                <button className="sorting" onClick={() => this.dateSortArticles('newest')}>Newest</button>
+                <button className="sorting" onClick={() => this.dateSortArticles('oldest')}>Oldest</button>
+                <button className="sorting" onClick={() => this.trendSortArticles()}>Trending</button>
                 <ul>
                     {articles.map(article => {
+                        const articleRating = (+article.votes + +article.comment_count);
+                        const articleAge = article.created_at;
+                        // console.log(articleAge);
+                        // console.log(articleRating);
+
                         const createdAt = moment(article.created_at).format('MMMM Do YYYY, h:mm:ss a');
                         return (
                             <div className="article" key={article._id}>
@@ -46,6 +63,23 @@ class Articles extends Component {
         this.setState({
             articles
         });
+    }
+
+    dateSortArticles = (criterion) => {
+        const sortable = this.state.articles;
+        let dateSorted = sortBy(sortable, article => article.created_at);
+        criterion === 'oldest' ? dateSorted : dateSorted.reverse();
+        this.setState({
+            articles: dateSorted
+        });
+    }
+
+    trendSortArticles = () => {
+        const sortable = this.state.articles;
+        const popularitySorted = sortBy(sortable, article => (article.votes + article.comment_count)).reverse()
+        this.setState({
+            articles: popularitySorted
+        })
     }
 }
 
