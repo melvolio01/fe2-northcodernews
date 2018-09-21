@@ -9,7 +9,14 @@ nav {
     width: 100%;
     text-align: center;
     margin: 0;
+    opacity: 0.9;
+    display: flex;
+    justify-content: center;
 } 
+
+#home-icon {
+    height: 40px;
+}
 
 nav a {
     text-decoration: none;

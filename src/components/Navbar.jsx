@@ -1,26 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './Navbar.css';
 import { Link, NavLink } from 'react-router-dom';
+import DropDown from './Dropdown';
 
+class Navbar extends Component {
+    state = {
+        showDropDown: false
+    }
+    render() {
+        return (
+            <nav>
+                <Link onClick={() => this.toggleDropDown()} to="/"><img id="home-icon" src="https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png"></img></Link>
+                {this.state.showDropDown ? <DropDown /> : null}
+            </nav>
+        );
+    };
 
-const Navbar = () => {
-    return (
-        <nav>
-            <Link to="/">NavBar</Link>
-            <NavLink to="/topics/coding" activeStyle={{
-                fontWeight: 'bold',
-                borderBottom: '5px solid white'
-            }}>Coding</NavLink>
-            <NavLink to="/topics/football" activeStyle={{
-                fontWeight: 'bold',
-                color: 'red'
-            }}>Football</NavLink>
-            <NavLink to="/topics/cooking" activeStyle={{
-                fontWeight: 'bold',
-                color: 'red'
-            }}>Cooking</NavLink>
-        </nav>
-    );
-};
+    toggleDropDown = () => {
+        console.log('toggle!');
+        this.state.showDropDown ?
+            this.setState({
+                showDropDown: false
+            }) :
+            this.setState({
+                showDropDown: true
+            })
+    }
+}
 
 export default Navbar;
