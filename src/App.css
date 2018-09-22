@@ -181,7 +181,15 @@ a:hover {
   height: auto;
   width: 35vw;
   height: 50%;
+  background: red;
 }
+
+.area0 .img-container, .area1 .img-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
 
 .area2 .img-container,
 .area3 .img-container,
