@@ -15,7 +15,10 @@ class Articles extends Component {
         const articles = this.state.articles;
         let pages = Math.ceil(this.state.articles.length / 8);
         pages = Array.from({ length: pages }, (e, i) => i + 1) // [0, 1, 2, 3, 4]
-        console.log(pages);
+        const firstArt = this.state.page === 0 ? 0 : ((this.state.page * 8))
+        const lastArt = firstArt + 8;
+        console.log(firstArt);
+        console.log(lastArt);
         return (
             <div className="articles front-page-container">
                 <div className="article-sort">
@@ -23,7 +26,7 @@ class Articles extends Component {
                     <button className="sorting" onClick={() => this.dateSortArticles('oldest')}>Oldest</button>
                     <button className="sorting" onClick={() => this.trendSortArticles()}>Popular</button>
                 </div>
-                {articles.slice(this.state.page, 8).map((article, i) => {
+                {articles.slice(firstArt, lastArt).map((article, i) => {
 
                     const createdAt = moment(article.created_at).fromNow();
                     return (
@@ -43,9 +46,11 @@ class Articles extends Component {
                 )}
                 <div class="pagination">
                     <p>More Articles</p>
-                    {pages.map((page) => {
-                        return <button className="paginate">{page}</button>
-                    })}
+                    <div className="pages">
+                        {pages.map((page) => {
+                            return <button className="paginate" onClick={(e) => this.changePage(e)}>{page}</button>
+                        })}
+                    </div>
                 </div>
             </div>
         );
@@ -63,8 +68,10 @@ class Articles extends Component {
         const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
         const res = (topic ? await API.fetchArticlesByTopic(topic) : await API.fetchArticles());
         const articles = res.data.articles;
+        const page = 0;
         this.setState({
-            articles
+            articles,
+            page
         });
     }
 
@@ -83,6 +90,14 @@ class Articles extends Component {
         this.setState({
             articles: popularitySorted
         })
+    }
+
+    changePage = (e) => {
+        e.preventDefault();
+        const page = +e.target.innerText - 1;
+        this.setState({
+            page
+        });
     }
 }
 
