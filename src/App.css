@@ -46,7 +46,6 @@ button i:focus {
 }
 
 .front-page-container {
-  z-index: -1;
   display: grid;
   grid-template-rows: 100px 1fr 1fr 1fr 1fr 1fr 1fr 100px;
   grid-template-areas:    
@@ -58,9 +57,22 @@ button i:focus {
       'third fourth fifth'
       'sixth seventh eighth'
       'pagination pagination pagination';
-  width: 100%;
+  width: 100vw;
   height: 200vh;
   margin: 0;
+}
+
+.sorting {
+  width: 100px;
+  color: #594d46;
+  height: 30px;
+  background-color: #d1b280;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.6em;
+}
+
+.sorting:hover {
+  cursor: pointer;
 }
 
 .article-sort {
@@ -76,6 +88,7 @@ button i:focus {
 
 .sorting {
   width: 100px;
+  margin: 0;
 }
 
 .article {
@@ -181,13 +194,14 @@ a:hover {
   height: auto;
   width: 35vw;
   height: 50%;
-  background: red;
 }
 
-.area0 .img-container, .area1 .img-container {
+.area0 .img-container img, .area1 .img-container img {
   display: block;
   margin-left: auto;
-  margin-right: auto
+  margin-right: auto;
+  max-height: 100%;
+  width: auto;
 }
 
 

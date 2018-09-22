@@ -12,7 +12,8 @@ class Comments extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="comments">
+                <NewComment addComment={this.addComment} />
                 <div>
                     {
                         this.state.comments.length > 0 ?
@@ -24,7 +25,6 @@ class Comments extends Component {
                             })
                             : null}
                 </div>
-                <NewComment addComment={this.addComment} />
             </div>
         );
     }

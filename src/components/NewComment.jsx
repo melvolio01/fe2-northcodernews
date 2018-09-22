@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Article.css';
 
 class NewComment extends Component {
     state = {
@@ -6,7 +7,7 @@ class NewComment extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="new-comment">
                 <form onSubmit={this.handleSubmit}>
                     <input value={this.state.newComment} onChange={this.updateComment}></input>
                     <button>Add Comment</button>
