@@ -15,31 +15,47 @@
 i {
     opacity: 0.5;
 }
+
+form {
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding-left: 2%;
+}
+ 
 .new-comment {
     padding-bottom: 4vh;
     border-bottom: 1px solid #594d46;
 }
 
-.new-comment input {
-    width: 90%;
-
+.new-comment textarea {
+    width: 80%;
+    height: 80px;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.5em;
     margin: 5px;
-    margin-top: -10px;
-    height: 50px;
     border: none;
 }
 
 .new-comment button {
-    width: 8%;
+    width: 100px;
+    border-radius: 5px;
     padding: 2px;
     font-family: 'Playfair Display', serif;
     font-size: 0.5em;
     background-color: #efe4d1;
     cursor: pointer;
     color: #594d46;
+    border: 1px solid #594d46;
 }
 
-.new-comment input:focus {
+.new-comment button:hover {
+    color: #d1b280;
+    border: 1px solid #d1b280;
+}
+
+.new-comment textarea:focus {
     border: 1px solid silver;
     outline: none;
 }

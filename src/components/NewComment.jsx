@@ -9,7 +9,7 @@ class NewComment extends Component {
         return (
             <div className="new-comment">
                 <form onSubmit={this.handleSubmit}>
-                    <input value={this.state.newComment} onChange={this.updateComment}></input>
+                    <textarea value={this.state.newComment} onChange={this.updateComment}></textarea>
                     <button>Add Comment</button>
                 </form>
             </div>

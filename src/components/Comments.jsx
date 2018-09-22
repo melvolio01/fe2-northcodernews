@@ -49,7 +49,8 @@ class Comments extends Component {
     getComments = async () => {
         const artId = this.props.id;
         const res = await API.fetchCommentsByArtId(artId);
-        const comments = res.data.comments;
+        let comments = res.data.comments;
+        comments = sortBy(comments, comment => comment.created_at).reverse();
         this.setState({
             comments
         });
