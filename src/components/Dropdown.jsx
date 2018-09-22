@@ -1,25 +1,28 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
-const Dropdown = (func) => {
+const DropDown = (props) => {
+    console.log(props.hide);
     return (
         <div>
             <div className="menu">
-                <NavLink onClick={(e) => func(e)} to="/topics/coding" activeStyle={{
+                <Link to="/">Home</Link>
+                <NavLink to="/topics/coding" activeStyle={{
                     color: '#D1B280',
                     paddingBottom: '2px'
                 }}>Coding</NavLink>
-                <NavLink onClick={(e) => func(e)} to="/topics/football" activeStyle={{
+                <NavLink to="/topics/football" activeStyle={{
                     color: '#D1B280',
                     paddingBottom: '2px'
                 }}>Football</NavLink>
-                <NavLink onClick={(e) => func(e)} to="/topics/cooking" activeStyle={{
+                <NavLink to="/topics/cooking" activeStyle={{
                     color: '#D1B280',
                     paddingBottom: '2px'
                 }}>Cooking</NavLink>
             </div>
-        </div>
+        </div >
     );
+
 };
 
-export default Dropdown;
+export default DropDown;

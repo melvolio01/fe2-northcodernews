@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.css';
-import { Link, NavLink } from 'react-router-dom';
-import DropDown from './Dropdown';
+import DropDown from './DropDown';
 
 class Navbar extends Component {
     state = {
@@ -10,8 +9,8 @@ class Navbar extends Component {
     render() {
         return (
             <nav>
-                <Link onClick={() => this.toggleDropDown()} to="/"><img id="home-icon" src="https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png"></img></Link>
-                {this.state.showDropDown ? <DropDown func={this.hideDropDownOnClick} /> : null}
+                <button className="home-icon" onClick={() => this.toggleDropDown()}><img id="home-icon" src="https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png"></img></button>
+                {this.state.showDropDown ? <DropDown hide={this.hideDropDownOnClick} color={'blue'} /> : null}
             </nav>
         );
     };
@@ -26,7 +25,9 @@ class Navbar extends Component {
             })
     }
 
-    hideDropDownOnClick = () => {
+    hideDropDownOnClick = (e) => {
+        console.log('dont refresh')
+        e.preventDefault();
         this.setState({
             showDropDown: false
         });

@@ -1,20 +1,35 @@
 const DB_URL = `https://mighty-refuge-69006.herokuapp.com/api`;
 const axios = require('axios');
 
-export const fetchArticles = () => axios.get(`${DB_URL}/articles`);
+// withErrorHandling = (func, args) => {
 
-export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${topic}/articles`);
+// }
 
-export const fetchArticleById = (id) => axios.get(`${DB_URL}/articles/${id}`);
+export const fetchArticles = () => axios.get(`${DB_URL}/articles`).catch(error => {
+    console.dir('FROM API ' + JSON.stringify(error.response))
+});
 
-export const fetchCommentsByArtId = (id) => axios.get(`${DB_URL}/articles/${id}/comments`);
+
+export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${topic}/articles`).catch(error => {
+    console.dir('FROM API ' + JSON.stringify(error.response))
+});
+
+export const fetchArticleById = (id) => axios.get(`${DB_URL}/articles/${id}`).catch(error => {
+    console.dir('FROM API ' + JSON.stringify(error.response))
+});
+
+export const fetchCommentsByArtId = (id) => axios.get(`${DB_URL}/articles/${id}/comments`).catch(error => {
+    console.dir('FROM API ' + JSON.stringify(error.response))
+});
 
 export const addCommentToArticle = (articleId, comment, user) => {
     if (comment !== '') {
         return axios.post(`${DB_URL}/articles/${articleId}/comments`, {
             body: comment,
             created_by: user
-        })
+        }).catch(error => {
+            console.dir('FROM API ' + error)
+        });
     }
 }
 

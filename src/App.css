@@ -29,6 +29,11 @@ button i {
   color: #594D46;
 }
 
+.vote-button {
+  height: 30px;
+  width: 30px;
+}
+
 button {
   background-color: #efefef;
 }
@@ -40,7 +45,7 @@ button i:focus {
   color: red;
 }
 
-.grid-container {
+.front-page-container {
   z-index: -1;
   display: grid;
   grid-template-rows: 100px 1fr 1fr 1fr 1fr 1fr 1fr 100px;
@@ -53,9 +58,8 @@ button i:focus {
       'third fourth fifth'
       'sixth seventh eighth'
       'pagination pagination pagination';
-  border: 1px solid black;
   width: 100%;
-  height: 150vh;
+  height: 200vh;
   margin: 0;
 }
 
@@ -68,6 +72,10 @@ button i:focus {
   padding-bottom: 10px;
   width: 100%;
   height: 100%;
+}
+
+.sorting {
+  width: 100px;
 }
 
 .article {
@@ -85,6 +93,7 @@ button i:focus {
   border-bottom: 1px solid #D1B280;
   margin: 10px;
   margin-top: 25px;
+  padding-bottom: 50px;
 }
 
 .area1 {
@@ -126,7 +135,8 @@ button i:focus {
   display: inline-flex;
   align-items: flex-start;
   flex-wrap: wrap;
-  padding: 20px 10px;
+  padding: 10px;
+  padding-top: 0;
   margin: 10px;
   border-bottom: 1px solid #594d46;
 }
@@ -159,18 +169,27 @@ a:hover {
 .area0 .img-container {
   margin-top: 0;
   margin-bottom: 2%;
-  border: 1px solid #D1B280;
-  height: 70%;
-  width: 100%;
-  background-image: url("https://images.unsplash.com/photo-1472437774355-71ab6752b434?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=dd4d735954f33290fbf984e4eb7abe32&auto=format&fit=crop&w=967&q=80");
+  overflow: hidden;
+  height: auto;
+  width: 60vw;
+  height: 60%;
 }
 
 .area1 .img-container {
   margin-bottom: 5%;
-  border: 1px solid #594d46;
+  overflow: hidden;
+  height: auto;
+  width: 35vw;
   height: 50%;
-  width: 100%;
-  background-image: url("https://i.pinimg.com/originals/0e/60/60/0e60601f0e9c24770b7515717fa1e650.jpg");
+}
+
+.area2 .img-container,
+.area3 .img-container,
+.area4 .img-container,
+.area5 .img-container,
+.area6 .img-container,
+.area7 .img-container {
+  display: none;
 }
 
 .article-info {
@@ -179,6 +198,11 @@ a:hover {
   width: 100%;
   align-items: center;
   justify-content: flex-start;
+}
+
+.article-details {
+  display: flex;
+  flex-direction: column;
 }
 
 .voter {
@@ -190,6 +214,5 @@ a:hover {
 
 .voter p {
   text-align: center;
-  padding: 5px;
+  padding: 2px;
 }
-
