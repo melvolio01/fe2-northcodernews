@@ -8,6 +8,7 @@
       "marginl article margin"
       "marginl article margin"
       "marginl article margin"
+      "marginl comments margin" 
       "marginl comments margin"
       "marginl comments margin"
       "marginl comments margin"
@@ -18,8 +19,11 @@
 
 .chosen-article {
     grid-area: article;
+    overflow: auto;
     display: inline-flex;
     flex-direction: row;
+    min-width: 0;
+    min-height: 0;
 }
 
 .chosen-article .voter {
@@ -44,14 +48,17 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    height: 500px;
+    height: 400px;
+    margin-bottom: 20px;
     width: auto;
 }
 
 .comments {
     grid-area: comments;
-    overflow-y: scroll;
+    overflow: auto;
     background-color: #efe4d1;
+    min-width: 0;
+    min-height: 0;
 }
 
 .comment-sorting {
@@ -69,10 +76,24 @@
     border-right: none;
 }
 
+.back-button {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75em;
+    padding: 5px;
+    margin: 25px;
+    width: 100px;
+    border-radius: 5px;
+    color: #594d46;
+    border: 1px solid #594d46;
+}
 
-
-
+.back-button:hover {
+    color: #d1b280;
+    border: 1px solid #d1b280;
+}
 
 .new-comment {
     grid-area: new-comment;
+    min-width: 0;
+    min-height: 0;
 }

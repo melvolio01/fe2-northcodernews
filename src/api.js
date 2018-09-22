@@ -9,7 +9,6 @@ export const fetchArticles = () => axios.get(`${DB_URL}/articles`).catch(error =
     console.dir('FROM API ' + JSON.stringify(error.response))
 });
 
-
 export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${topic}/articles`).catch(error => {
     console.dir('FROM API ' + JSON.stringify(error.response))
 });

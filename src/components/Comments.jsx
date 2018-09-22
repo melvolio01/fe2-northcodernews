@@ -17,9 +17,11 @@ class Comments extends Component {
             < div className="comments" >
                 <NewComment addComment={this.addComment} />
                 <div class="comment-box">
-                    <button className="comment-sorting" onClick={() => this.dateSortComments('newest')}>New</button>
-                    <button className="comment-sorting" onClick={() => this.dateSortComments('oldest')}>Old</button>
-                    <button className="comment-sorting" onClick={() => this.trendSortComments()}>Popular</button>
+                    <div>
+                        <button className="comment-sorting" onClick={() => this.dateSortComments('newest')}>New</button>
+                        <button className="comment-sorting" onClick={() => this.dateSortComments('oldest')}>Old</button>
+                        <button className="comment-sorting" onClick={() => this.trendSortComments()}>Popular</button>
+                    </div>
                     {
                         this.state.comments.length > 0 ?
                             this.state.comments.map(comment => {

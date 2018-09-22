@@ -57,7 +57,7 @@ i {
 }
 
 .ordinary-comment .comment-body {
-    width: 90%;
+    width: 85%;
 }
 
 .ordinary-comment .voter {
@@ -68,7 +68,7 @@ i {
 }
 
 .ordinary-comment .voter p {
-    margin-left: -1vw;
+    margin-left: -2vw;
     padding-left: 0;
 }
 
@@ -78,5 +78,19 @@ i {
     height: 30px;
     background-color: #efe4d1;
 }
+.my-comment {
+    padding: 1%;
+    padding-left: 5%;
+    border-bottom: 1px solid #594d46;
+}
 
+.my-comment i {
+    font-size: 0.6em;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.my-votes {
+}
 

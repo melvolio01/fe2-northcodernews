@@ -8,7 +8,8 @@ import sortBy from 'lodash.sortby';
 class Articles extends Component {
     state = {
         articles: [],
-        page: 0
+        page: 0,
+        voteChange: 0
     }
     render() {
         const articles = this.state.articles;
@@ -29,12 +30,11 @@ class Articles extends Component {
                         <div className={`article area${i}`} key={article._id}>
                             <div className="img-container"><img src={article.img_url}></img></div>
                             <div class="article-info">
-                                <div className="voter"><button className="vote-button"><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes}</p>
-                                    <button className="vote-button"><i className="far fa-arrow-alt-circle-down"></i></button></div>
                                 <Link className="article-title" key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
                             </div>
                             <div className="article-details">
                                 <p>Topic: {article.belongs_to}</p>
+                                <p>Votes: {article.votes}</p>
                                 <p>Comments: {article.comment_count}</p>
                                 <p>Posted by: {article.created_by.username} {'(' + createdAt + ')'}</p>
                             </div>

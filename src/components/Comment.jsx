@@ -18,7 +18,7 @@ class Comment extends Component {
                     <p>{comment.votes + this.state.voteChange}</p>
                     <button onClick={() => this.handleVote('down')} > <i className="far fa-arrow-alt-circle-down"></i></button>
                 </div>
-                : <p>Votes: {comment.votes}</p>
+                : <p className="my-votes">Votes: {comment.votes}</p>
             }</div>
             <div className="comment-body">
                 <p className="bold">{comment.created_by.username} </p>
