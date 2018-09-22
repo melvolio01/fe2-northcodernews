@@ -14,11 +14,10 @@ class Articles extends Component {
     render() {
         const articles = this.state.articles;
         let pages = Math.ceil(this.state.articles.length / 8);
-        pages = Array.from({ length: pages }, (e, i) => i + 1) // [0, 1, 2, 3, 4]
+        pages = Array.from({ length: pages }, (e, i) => i + 1)
+        // first and last args for slice of articles per page
         const firstArt = this.state.page === 0 ? 0 : ((this.state.page * 8))
         const lastArt = firstArt + 8;
-        console.log(firstArt);
-        console.log(lastArt);
         return (
             <div className="articles front-page-container">
                 <div className="article-sort">

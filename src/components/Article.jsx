@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Comments from './Comments';
 import * as API from '../api';
+import moment from 'moment';
 import './Article.css';
 
 class Article extends Component {
@@ -18,7 +19,10 @@ class Article extends Component {
                         <div className="article-img"><img src={article.img_url}></img></div>
                         <div className="voter"><button onClick={() => this.handleVote('up')}><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes + this.state.voteChange}</p>
                             <button onClick={() => this.handleVote('down')}> <i className="far fa-arrow-alt-circle-down"></i></button></div>
-                        <article class="article-body"><h4>{article.title}</h4><p>{article.body}</p></article><button className="back-button" onClick={this.props.history.goBack}>Back</button></div> </div>
+                        <article class="article-body"><h4>{article.title}</h4>
+                            <p>By {article.created_by.username} {'(' + moment(article.created_at).format("MMM Do YY") + ')'}</p>
+                            <p>{article.body}</p></article>
+                        <button className="back-button" onClick={this.props.history.goBack}>Back</button></div> </div>
                     : null}
                 {article ? <Comments className="comments" id={this.state.article.article._id} user={this.props.user} /> : null}
             </div>
