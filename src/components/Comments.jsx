@@ -3,6 +3,8 @@ import * as API from '../api';
 import Comment from './Comment';
 import NewComment from './NewComment';
 import './Comments.css';
+import moment from 'moment';
+import sortBy from 'lodash.sortby';
 
 
 class Comments extends Component {
@@ -12,9 +14,12 @@ class Comments extends Component {
     }
     render() {
         return (
-            <div className="comments">
+            < div className="comments" >
                 <NewComment addComment={this.addComment} />
-                <div>
+                <div class="comment-box">
+                    <button className="comment-sorting" onClick={() => this.dateSortComments('newest')}>New</button>
+                    <button className="comment-sorting" onClick={() => this.dateSortComments('oldest')}>Old</button>
+                    <button className="comment-sorting" onClick={() => this.trendSortComments()}>Popular</button>
                     {
                         this.state.comments.length > 0 ?
                             this.state.comments.map(comment => {
@@ -24,12 +29,13 @@ class Comments extends Component {
                                 } else return null
                             })
                             : null}
+
                 </div>
-            </div>
+            </div >
         );
     }
     componentDidMount() {
-        this.getComments();
+        this.getComments()
     }
 
     componentDidUpdate = (prevProps) => {
@@ -63,6 +69,25 @@ class Comments extends Component {
         await API.removeComment(comment._id)
         this.setState({
             deletedComments: [...this.state.deletedComments, comment]
+        })
+    }
+
+    dateSortComments = (criterion, prevState) => {
+        if (this.state !== prevState) {
+            const sortable = this.state.comments;
+            let dateSorted = sortBy(sortable, comment => comment.created_at);
+            criterion === 'oldest' ? dateSorted : dateSorted.reverse();
+            this.setState({
+                comments: dateSorted
+            });
+        }
+    }
+
+    trendSortComments = () => {
+        const sortable = this.state.comments;
+        const popularitySorted = sortBy(sortable, comment => (comment.votes)).reverse()
+        this.setState({
+            comments: popularitySorted
         })
     }
 }

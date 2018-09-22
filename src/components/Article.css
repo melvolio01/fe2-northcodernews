@@ -9,9 +9,11 @@
       "marginl article margin"
       "marginl article margin"
       "marginl comments margin"
+      "marginl comments margin"
+      "marginl comments margin"
       "marginl comments margin";
   width: 100vw;
-  height: 200vh;
+  max-height: 300vh;
 }
 
 .chosen-article {
@@ -49,7 +51,27 @@
 .comments {
     grid-area: comments;
     overflow-y: scroll;
+    background-color: #efe4d1;
 }
+
+.comment-sorting {
+    background-color:  #efe4d1;
+    font-family: 'Playfair Display', serif;
+    font-size: 0.7em;
+    width: 10%;
+    height: 30px;
+    color: #594d46;
+    border-right: 1px solid #594d46;
+    margin-bottom: 2%;
+}
+
+.comment-sorting:last-of-class {
+    border-right: none;
+}
+
+
+
+
 
 .new-comment {
     grid-area: new-comment;

@@ -11,7 +11,7 @@ class Comment extends Component {
         const comment = this.props.comment;
         const myComment = (comment.created_by._id === this.props.user);
         const createdAt = moment(comment.created_at).format('MMMM Do YYYY, h:mm:ss a');
-        return <div key={comment._id} className={myComment ? "my-comment" : null} >
+        return <div key={comment._id} className={myComment ? "my-comment" : "ordinary-comment"} >
             <div className="voter"> {!myComment ?
                 <div>
                     <button onClick={() => this.handleVote('up')}><i className="far fa-arrow-alt-circle-up"></i></button>
@@ -20,9 +20,11 @@ class Comment extends Component {
                 </div>
                 : <p>Votes: {comment.votes}</p>
             }</div>
-            <p className="bold">{comment.created_by.username} </p>
-            <p>{'(' + createdAt + ')'}</p>
-            <p key={comment._id}>{comment.body}</p>
+            <div className="comment-body">
+                <p className="bold">{comment.created_by.username} </p>
+                <p>{'(' + createdAt + ')'}</p>
+                <p key={comment._id}>{comment.body}</p>
+            </div>
             {myComment ? <i className="fas fa-trash-alt" onClick={((e) => this.props.deleteComment(e, comment))}></i> : null}
         </div>
     }
