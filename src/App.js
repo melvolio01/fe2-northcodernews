@@ -19,7 +19,8 @@ class App extends Component {
           {<Route exact path="/" render={(props) => <Articles {...props} user={this.state.user_id} />} />}
           {<Route path="/topics/:topic" render={(props) => <Articles {...props} user={this.state.user_id} />} />}
           {<Route path="/articles/:article" render={(props) => <Article {...props} user={this.state.user_id} />} />}
-          {<Route render={(props) => <Error {...props} message={"404: Page not found"} />} />}
+          {<Route path="/error" component={Error} />}
+          {<Route component={Error} />}
         </Switch>
       </div>
     );

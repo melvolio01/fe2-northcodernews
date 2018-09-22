@@ -69,6 +69,7 @@ form {
 
 .ordinary-comment .comment-body {
     width: 85%;
+    line-height: 1.5;
 }
 
 .ordinary-comment .voter {
