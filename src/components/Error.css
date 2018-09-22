@@ -1,0 +1,17 @@
+.error-container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 200px auto;
+    grid-template-areas: "margin"
+                        "error-details";
+}
+
+.error-content {
+    grid-area: error-details;
+    text-align: center;
+}
+
+.error-content a {
+    color: #b71c1c;
+   padding: 50px;
+}

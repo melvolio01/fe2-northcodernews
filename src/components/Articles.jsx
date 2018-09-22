@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Article.css';
 import * as API from '../api';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
 import sortBy from 'lodash.sortby';
 
@@ -9,9 +9,13 @@ class Articles extends Component {
     state = {
         articles: [],
         page: 0,
-        voteChange: 0
+        voteChange: 0,
+        redirect: false,
+        error: {}
     }
     render() {
+        if (this.state.redirect) console.log(this.state.error)
+        // if (this.state.redirect) return <Redirect to={{ pathname: '/error', state: this.state.error }} />
         const articles = this.state.articles;
         let pages = Math.ceil(this.state.articles.length / 8);
         pages = Array.from({ length: pages }, (e, i) => i + 1)
@@ -60,18 +64,35 @@ class Articles extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (this.props !== prevProps) this.getArticles();
+        if (this.props !== prevProps) this.getArticles()
     }
 
     getArticles = async () => {
         const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
-        const res = (topic ? await API.fetchArticlesByTopic(topic) : await API.fetchArticles());
-        const articles = res.data.articles;
-        const page = 0;
-        this.setState({
-            articles,
-            page
-        });
+        const res = topic ? await API.fetchArticlesByTopic(topic)
+            .catch(error => {
+                console.log(error)
+                // this.setState({
+                //     redirect: true,
+                //     error: error
+                // })
+            })
+            : await API.fetchArticles()
+                .catch(error => {
+                    console.log(error)
+                    // this.setState({
+                    //     redirect: true,
+                    //     error: error
+                    // })
+                })
+        if (res) {
+            const articles = res.data.articles;
+            const page = 0;
+            this.setState({
+                articles,
+                page
+            });
+        }
     }
 
     dateSortArticles = (criterion) => {
