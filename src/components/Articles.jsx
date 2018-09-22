@@ -15,7 +15,7 @@ class Articles extends Component {
         const articles = this.state.articles;
         let pages = Math.ceil(this.state.articles.length / 8);
         pages = Array.from({ length: pages }, (e, i) => i + 1)
-        // first and last args for slice of articles per page
+        // first and last args for slice of articles per pages
         const firstArt = this.state.page === 0 ? 0 : ((this.state.page * 8))
         const lastArt = firstArt + 8;
         return (

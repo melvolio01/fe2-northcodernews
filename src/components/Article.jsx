@@ -10,7 +10,6 @@ class Article extends Component {
         voteChange: 0
     }
     render() {
-        console.log(this.props);
         const { article } = this.state.article;
         return (
             <div className="chosen-article-container">
@@ -43,10 +42,8 @@ class Article extends Component {
 
     getArticle = async () => {
         const articleID = (this.props.match.params.article);
-        console.log(this.props.match.params.article)
         const res = await API.fetchArticleById(articleID);
         const article = res.data;
-        console.log(article);
         this.setState({
             article
         });

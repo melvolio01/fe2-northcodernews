@@ -2,7 +2,6 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 const DropDown = (props) => {
-    console.log(props.hide);
     return (
         <div>
             <div className="menu">

@@ -54,7 +54,6 @@ class Comments extends Component {
         this.setState({
             comments
         });
-        console.log(this.state.comments);
     }
 
     addComment = async (comment) => {
