@@ -20,7 +20,7 @@ class Comments extends Component {
                     <div>
                         <button className="comment-sorting" onClick={() => this.dateSortComments('newest')}>New</button>
                         <button className="comment-sorting" onClick={() => this.dateSortComments('oldest')}>Old</button>
-                        <button className="comment-sorting" onClick={() => this.trendSortComments()}>Popular</button>
+                        <button className="comment-sorting" id="popular" onClick={() => this.trendSortComments()}>Popular</button>
                     </div>
                     {
                         this.state.comments.length > 0 ?
