@@ -6,7 +6,6 @@ const DropDown = (props) => {
         <div>
             <div className="menu">
                 <Link to="/">Home</Link>
-                <Link to="/error">Error Page</Link>
                 <NavLink to="/topics/coding" activeStyle={{
                     color: '#D1B280',
                     paddingBottom: '2px'
