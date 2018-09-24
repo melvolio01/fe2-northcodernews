@@ -14,7 +14,6 @@ class Articles extends Component {
         error: {}
     }
     render() {
-        if (this.state.redirect) console.log(this.state.error)
         if (this.state.redirect) return <Redirect to={{ pathname: '/error', state: this.state.error }} />
         const articles = this.state.articles;
         let pages = Math.ceil(this.state.articles.length / 8);
@@ -71,7 +70,6 @@ class Articles extends Component {
         const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
         const res = topic ? await API.fetchArticlesByTopic(topic)
             .catch(error => {
-                console.log(error)
                 this.setState({
                     redirect: true,
                     error: error
@@ -79,7 +77,6 @@ class Articles extends Component {
             })
             : await API.fetchArticles()
                 .catch(error => {
-                    console.log(error)
                     this.setState({
                         redirect: true,
                         error: error

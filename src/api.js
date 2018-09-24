@@ -15,7 +15,6 @@ export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${top
     let errorObj = JSON.stringify(error);
     errorObj = JSON.parse(errorObj);
     errorObj = errorObj.response;
-    console.log(errorObj);
     throw errorObj;
 });
 
