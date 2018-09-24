@@ -1,6 +1,6 @@
 NorthCoders News (Front End)
 
-A single-page application built using React (with React Router for routes) and the brilliant create-react-app configuration tool. Hosted by netlify at: https://5ba7a53d73f2cf5e73bc3bb7.happy-lamarr-657b75.netlify.com/topics/football
+A single-page application built using React (with React Router for routes) and create-react-app configuration tool. Hosted by netlify at: https://5ba8995b67610c44033416ee.happy-lamarr-657b75.netlify.com/
 
 This application consumes the NC News API hosted on heroku at: 
 https://mighty-refuge-69006.herokuapp.com/api/
@@ -9,7 +9,7 @@ NorthCoder News is a reddit-style site featuring articles on a range of subjects
 
 Comments can be left/deleted on each article by the user (who can also up and down-vote articles/comments). Comments can also be filtered (in much the same way as articles).
 
-No CSS frameworks were harmed in the making of this site. Styling is with CSS-grid/flex-box and media-queries for smaller screens.
+Styling is with CSS-grid/flex-box and media-queries for smaller screens.
 
 Installation
 
