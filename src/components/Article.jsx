@@ -19,7 +19,7 @@ class Article extends Component {
             return (
                 <div className="chosen-article-container">
                     {article ? <div class="chosen-article">
-                        <div>
+                        <div class="article-contents">
                             <div className="article-img"><img src={article.img_url}></img></div>
                             <div className="voter"><button onClick={() => this.handleVote('up')}><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes + this.state.voteChange}</p>
                                 <button onClick={() => this.handleVote('down')}> <i className="far fa-arrow-alt-circle-down"></i></button></div>
