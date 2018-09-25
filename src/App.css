@@ -226,7 +226,7 @@ button i:focus {
 
 .paginate {
   width: 20px;
-  height: 20px;
+  max-height: 30px;
   margin-top: -10px;
   font-family: 'Playfair Display', serif;
   font-size: 0.5em;
