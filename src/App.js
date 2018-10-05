@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Navbar from './components/Navbar';
 import Articles from './components/Articles';
 import Article from './components/Article';
-import NewArticle from './components/NewArticle';
 import Error from './components/Error';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';

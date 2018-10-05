@@ -26,7 +26,6 @@ class Articles extends Component {
                     <button className="sorting" onClick={() => this.dateSortArticles('newest')}>Newest</button>
                     <button className="sorting" onClick={() => this.dateSortArticles('oldest')}>Oldest</button>
                     <button className="sorting" onClick={() => this.trendSortArticles()}>Popular</button>
-                    <button className="sorting"><Link id="new-article" to={{ pathname: '/newArticle' }}>New Article</Link></button>
                 </div>
                 {articles.slice(firstArt, lastArt).map((article, i) => {
                     return <ArticleCard key={article._id} article={article} i={i} />
