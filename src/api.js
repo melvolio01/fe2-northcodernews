@@ -19,6 +19,15 @@ export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${top
     throw errorObj;
 });
 
+export const postArticleByTopic = (topic, article) => axios.post(`${DB_URL}/topics/${topic}/articles`, {
+    article
+}).catch(error => {
+    let errorObj = JSON.stringify(error);
+    errorObj = JSON.parse(errorObj);
+    errorObj = errorObj.response;
+    throw errorObj;
+});
+
 export const fetchArticleById = (id) => axios.get(`${DB_URL}/articles/${id}`).catch(error => {
     let errorObj = JSON.stringify(error);
     errorObj = JSON.parse(errorObj);
