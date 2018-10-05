@@ -3,7 +3,6 @@ import * as API from '../api';
 import Comment from './Comment';
 import NewComment from './NewComment';
 import './Comments.css';
-import moment from 'moment';
 import sortBy from 'lodash.sortby';
 
 
@@ -16,7 +15,7 @@ class Comments extends Component {
         return (
             < div className="comments" >
                 <NewComment addComment={this.addComment} />
-                <div class="comment-box">
+                <div className="comment-box">
                     <div>
                         <button className="comment-sorting" onClick={() => this.dateSortComments('newest')}>New</button>
                         <button className="comment-sorting" onClick={() => this.dateSortComments('oldest')}>Old</button>
@@ -59,7 +58,6 @@ class Comments extends Component {
     addComment = async (comment) => {
         const res = await API.addCommentToArticle(this.props.id, comment, this.props.user);
         if (res) {
-            const newComment = res.data.comment;
             if (this.state.comments !== undefined) {
                 this.getComments();
             }

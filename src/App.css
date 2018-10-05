@@ -135,6 +135,11 @@ button i:focus {
   padding: 0 10px;
 }
 
+#new-article:hover {
+  color: #594d46;
+  opacity: 0.8;
+}
+
 .article-title {
   font-size: 0.7em;
   width: 80%;

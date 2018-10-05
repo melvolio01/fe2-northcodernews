@@ -10,8 +10,10 @@ export const fetchArticles = () => axios.get(`${DB_URL}/articles`).catch(error =
     throw errorObj;
 });
 
+export const fetchTopics = () => axios.get(`${DB_URL}/topics`)
+
+
 export const fetchArticlesByTopic = (topic) => axios.get(`${DB_URL}/topics/${topic}/articles`).catch(error => {
-    console.dir(error);
     let errorObj = JSON.stringify(error);
     errorObj = JSON.parse(errorObj);
     errorObj = errorObj.response;
@@ -48,6 +50,10 @@ export const addCommentToArticle = (articleId, comment, user) => {
 
 export const removeComment = (commentId) => {
     return axios.delete(`${DB_URL}/comments/${commentId}`)
+}
+
+export const getUser = (username) => {
+    return axios.get(`${DB_URL}/users/${username}`)
 }
 
 export const voteOnArticle = (id, direction) => {

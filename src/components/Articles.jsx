@@ -16,8 +16,8 @@ class Articles extends Component {
     render() {
         if (this.state.redirect) return <Redirect to={{ pathname: '/error', state: this.state.error }} />
         const articles = this.state.articles;
-        let pages = Math.ceil(this.state.articles.length / 8);
-        pages = Array.from({ length: pages }, (e, i) => i + 1)
+        // let pages = Math.ceil(this.state.articles.length / 8);
+        let pages = Array.from({ length: Math.ceil(this.state.articles.length / 8) }, (e, i) => i + 1)
         // first and last args for slice of articles per pages
         const firstArt = this.state.page === 0 ? 0 : ((this.state.page * 8))
         const lastArt = firstArt + 8;
@@ -27,14 +27,15 @@ class Articles extends Component {
                     <button className="sorting" onClick={() => this.dateSortArticles('newest')}>Newest</button>
                     <button className="sorting" onClick={() => this.dateSortArticles('oldest')}>Oldest</button>
                     <button className="sorting" onClick={() => this.trendSortArticles()}>Popular</button>
+                    <button className="sorting"><Link id="new-article" to='/newArticle'>New Article</Link></button>
                 </div>
                 {articles.slice(firstArt, lastArt).map((article, i) => {
 
                     const createdAt = moment(article.created_at).fromNow();
                     return (
                         <div className={`article area${i}`} key={article._id}>
-                            <div className="img-container"><img src={article.img_url}></img></div>
-                            <div class="article-info">
+                            <div className="img-container"><img alt='' src={article.img_url}></img></div>
+                            <div className="article-info">
                                 <Link className="article-title" key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
                             </div>
                             <div className="article-details">
@@ -46,11 +47,11 @@ class Articles extends Component {
                         </div>)
                 }
                 )}
-                <div class="pagination">
+                <div className="pagination">
                     <p>More Articles</p>
                     <div className="pages">
                         {pages.map((page) => {
-                            return <button className="paginate" onClick={(e) => this.changePage(e)}>{page}</button>
+                            return <button key={page} className="paginate" onClick={() => this.changePage({ page })}>{page}</button>
                         })}
                     </div>
                 </div>
@@ -109,9 +110,8 @@ class Articles extends Component {
         })
     }
 
-    changePage = (e) => {
-        e.preventDefault();
-        const page = +e.target.innerText - 1;
+    changePage = (thisPage) => {
+        const page = +thisPage.page - 1;
         this.setState({
             page
         });

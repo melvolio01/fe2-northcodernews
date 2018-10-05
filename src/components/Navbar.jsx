@@ -10,7 +10,7 @@ class Navbar extends Component {
         return (
             <nav>
                 <div>
-                    <button className="home-icon" onClick={() => this.toggleDropDown()}><img id="home-icon" src="https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png"></img></button>
+                    <button className="home-icon" onClick={() => this.toggleDropDown()}><img id="home-icon" alt="home-icon" src="https://cdn-images-1.medium.com/max/1200/1*LdnSztHVYhhd8K8EqlgCJQ.png"></img></button>
                     {this.state.showDropDown ? <DropDown hide={this.hideDropDownOnClick} color={'blue'} /> : null}
                     <p className="user-info">Logged in as: {this.props.user}</p>
                 </div>
@@ -28,8 +28,8 @@ class Navbar extends Component {
             })
     }
 
-    hideDropDownOnClick = (e) => {
-        e.preventDefault();
+    hideDropDownOnClick = () => {
+        // e.preventDefault();
         this.setState({
             showDropDown: false
         });

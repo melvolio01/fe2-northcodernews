@@ -20,6 +20,8 @@ width: 100vw;
 max-height: 300vh;
 }
 
+
+
 @media screen and (max-width: 700px) {
     .chosen-article-container {
         display: grid;
@@ -119,6 +121,8 @@ max-height: 300vh;
     float: left;
     padding: 5px;
 }
+
+.new-
 
 .chosen-article .voter button {
     width: 30px;

@@ -4,6 +4,7 @@ import { Link, NavLink } from 'react-router-dom';
 const DropDown = (props) => {
     return (
         <div>
+
             <div className="menu">
                 <Link to="/">Home</Link>
                 <NavLink to="/topics/coding" activeStyle={{
@@ -21,7 +22,6 @@ const DropDown = (props) => {
             </div>
         </div >
     );
-
 };
 
 export default DropDown;
