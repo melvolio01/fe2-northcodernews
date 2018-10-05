@@ -6,7 +6,6 @@ export const fetchArticles = () => axios.get(`${DB_URL}/articles`).catch(error =
     let errorObj = JSON.stringify(error);
     errorObj = JSON.parse(errorObj);
     errorObj = errorObj.response
-    console.log(errorObj);
     throw errorObj;
 });
 

@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './Article.css';
 import * as API from '../api';
 import { Link, Redirect } from 'react-router-dom';
-import moment from 'moment';
 import sortBy from 'lodash.sortby';
+import ArticleCard from './ArticleCard';
+import moment from 'moment';
+
 
 class Articles extends Component {
     state = {
@@ -16,7 +18,6 @@ class Articles extends Component {
     render() {
         if (this.state.redirect) return <Redirect to={{ pathname: '/error', state: this.state.error }} />
         const articles = this.state.articles;
-        // let pages = Math.ceil(this.state.articles.length / 8);
         let pages = Array.from({ length: Math.ceil(this.state.articles.length / 8) }, (e, i) => i + 1)
         // first and last args for slice of articles per pages
         const firstArt = this.state.page === 0 ? 0 : ((this.state.page * 8))
@@ -30,21 +31,7 @@ class Articles extends Component {
                     <button className="sorting"><Link id="new-article" to='/newArticle'>New Article</Link></button>
                 </div>
                 {articles.slice(firstArt, lastArt).map((article, i) => {
-
-                    const createdAt = moment(article.created_at).fromNow();
-                    return (
-                        <div className={`article area${i}`} key={article._id}>
-                            <div className="img-container"><img alt='' src={article.img_url}></img></div>
-                            <div className="article-info">
-                                <Link className="article-title" key={article._id} to={`/articles/${article._id}`} > <article key={article._id}>{article.title}</article></Link>
-                            </div>
-                            <div className="article-details">
-                                <p>Topic: {article.belongs_to}</p>
-                                <p>Votes: {article.votes}</p>
-                                <p>Comments: {article.comment_count}</p>
-                                <p>Posted by: {article.created_by.username} {'(' + createdAt + ')'}</p>
-                            </div>
-                        </div>)
+                    return <ArticleCard article={article} i={i} />
                 }
                 )}
                 <div className="pagination">

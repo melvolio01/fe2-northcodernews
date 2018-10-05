@@ -56,12 +56,13 @@ class Comments extends Component {
 
     addComment = async (comment) => {
         const res = await API.addCommentToArticle(this.props.id, comment, this.props.user);
-        if (res) {
-            if (this.state.comments !== undefined) {
-                this.getComments();
-            }
-        }
+        this.setState({
+            comments: [...this.state.comments, res.data.comment]
+        })
+        this.getComments();
     }
+
+
 
     deleteComment = async (e, comment) => {
         e.preventDefault();
