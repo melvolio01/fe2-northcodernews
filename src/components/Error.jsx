@@ -17,7 +17,7 @@ const Error = (props) => {
     return (
         <div className="error-container">
             <div className="error-content">
-                <h4>Status: {error.status ? error.status : null}</h4>
+                <h4>Status: {error.status && error.status}</h4>
                 <h4>{error.status ? error.statusText : "404"}</h4>
                 <h5>{error.status ? error.data : "Error"}</h5>
                 <Link to='/'>Home</Link>

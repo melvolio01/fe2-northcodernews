@@ -22,14 +22,13 @@ class Comments extends Component {
                         <button className="comment-sorting" id="popular" onClick={() => this.trendSortComments()}>Popular</button>
                     </div>
                     {
-                        this.state.comments.length > 0 ?
-                            this.state.comments.map(comment => {
-                                if (!this.state.deletedComments.includes(comment)) {
-                                    return <Comment key={comment._id} user={this.props.user} comment={comment} deleteComment={this.deleteComment} />
-
-                                } else return null
-                            })
-                            : null}
+                        this.state.comments.length > 0 &&
+                        this.state.comments.map(comment => {
+                            if (!this.state.deletedComments.includes(comment)) {
+                                return <Comment key={comment._id} user={this.props.user} comment={comment} deleteComment={this.deleteComment} />
+                            }
+                        })
+                    }
 
                 </div>
             </div >

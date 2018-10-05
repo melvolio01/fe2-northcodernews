@@ -25,7 +25,7 @@ class Comment extends Component {
                 <p>{'(' + createdAt + ')'}</p>
                 <p key={comment._id}>{comment.body}</p>
             </div>
-            {myComment ? <i className="fas fa-trash-alt" onClick={((e) => this.props.deleteComment(e, comment))}></i> : null}
+            {myComment && <i className="fas fa-trash-alt" onClick={((e) => this.props.deleteComment(e, comment))}></i>}
         </div>
     }
 

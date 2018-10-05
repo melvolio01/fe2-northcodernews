@@ -68,7 +68,7 @@ class Articles extends Component {
     }
 
     getArticles = async () => {
-        const topic = this.props.match.params.topic ? this.props.match.params.topic : null;
+        const topic = this.props.match.params.topic && this.props.match.params.topic;
         const res = topic ? await API.fetchArticlesByTopic(topic)
             .catch(error => {
                 this.setState({

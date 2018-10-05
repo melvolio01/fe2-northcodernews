@@ -18,7 +18,7 @@ class Article extends Component {
             const { article } = this.state.article;
             return (
                 <div className="chosen-article-container">
-                    {article ? <div className="chosen-article">
+                    {article && <div className="chosen-article">
                         <div className="article-contents">
                             <div className="article-img"><img alt='' src={article.img_url}></img></div>
                             <div className="voter"><button onClick={() => this.handleVote('up')}><i className="far fa-arrow-alt-circle-up"></i></button><p>{article.votes + this.state.voteChange}</p>
@@ -27,8 +27,8 @@ class Article extends Component {
                                 <p>By {article.created_by.username} {'(' + moment(article.created_at).format("MMM Do YY") + ')'}</p>
                                 <p>{article.body}</p></article>
                             <button className="back-button" onClick={this.props.history.goBack}>Back</button></div> </div>
-                        : null}
-                    {article ? <Comments className="comments" id={this.state.article.article._id} user={this.props.user} /> : null}
+                    }
+                    {article && <Comments className="comments" id={this.state.article.article._id} user={this.props.user} />}
                 </div>
             );
         }
