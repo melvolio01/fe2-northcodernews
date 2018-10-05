@@ -4,8 +4,6 @@ import * as API from '../api';
 import { Link, Redirect } from 'react-router-dom';
 import sortBy from 'lodash.sortby';
 import ArticleCard from './ArticleCard';
-import moment from 'moment';
-
 
 class Articles extends Component {
     state = {
@@ -31,7 +29,7 @@ class Articles extends Component {
                     <button className="sorting"><Link id="new-article" to='/newArticle'>New Article</Link></button>
                 </div>
                 {articles.slice(firstArt, lastArt).map((article, i) => {
-                    return <ArticleCard article={article} i={i} />
+                    return <ArticleCard key={article._id} article={article} i={i} />
                 }
                 )}
                 <div className="pagination">
