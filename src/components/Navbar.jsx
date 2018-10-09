@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.css';
-import DropDown from './DropDown';
+import DropDown from './Dropdown';
 
 class Navbar extends Component {
     state = {
